@@ -14,4 +14,8 @@ mkcert -install
 mkcert localhost
 ```
 
+4. Obtain the credentials from our Google Drive
+
+5. Copy and rename `.env.example` to `.env` with the data from Drive
+
 And that's it!
