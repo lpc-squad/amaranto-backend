@@ -2,7 +2,7 @@ require("dotenv").config();
 const fs = require("fs");
 const https = require("https");
 const express = require("express");
-const { auth } = require("express-openid-connect");
+const { auth, requiresAuth } = require("express-openid-connect");
 
 const key = fs.readFileSync("./localhost-key.pem");
 const cert = fs.readFileSync("./localhost.pem");
@@ -28,6 +28,9 @@ app.get("/", (req, res) => {
   res.send(req.isAuthenticated() ? "Logged in" : "Logged out");
 });
 
+app.get("/profile", requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.openid.user));
+});
 https.createServer({ key, cert }, app).listen("3000", () => {
   console.log("Listening on https://localhost:3000");
 });
