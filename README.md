@@ -1,21 +1,30 @@
-## Deploy locally
+# Clinical Backend
 
-1. Install [**`mkcert`**](https://github.com/FiloSottile/mkcert#installation)
+## INSTALL
 
-2. With your terminal (PowerShell on Windows) with Administrator mode, go to the project folder and run:
+1. Crear una carpeta principal (por ejemplo, **`Clinical`**)
+
+2. Dentro de la carpeta, clonar el [**`frontend`**](https://github.com/FMGordillo/clinical-web) y [**`backend`**](https://github.com/FMGordillo/clinical-backend).
+
+3. Dentro de la carpeta principal del paso 1, también anexá un archivo según tu sistema operativo:
+
+### Windows
+
+**`run.ps1`**
 
 ```
-mkcert -install
+npx concurrently 'cd clinical-backend && npm run dev' 'cd clinical-web && npm run dev'
 ```
 
-3. And run:
+### Linux / Mac
+
+**`run.sh`**
 
 ```
-mkcert localhost
+#!/bin/bash
+
+npx concurrently "cd clinical-backend && npm run dev" "cd clinical-web && npm run dev"```
+
+## Project Structure
+
 ```
-
-4. Obtain the credentials from our Google Drive
-
-5. Copy and rename `.env.example` to `.env` with the data from Drive
-
-And that's it!
