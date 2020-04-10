@@ -38,7 +38,7 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-//app.use(jwtCheck);
+// app.use(jwtCheck);
 
 /**
  * RUTAS (https://expressjs.com/en/starter/basic-routing.html)
@@ -48,6 +48,11 @@ app.use(
  * { allRecords, recordsById, allPatients, patientsById, (patientsByDoctorId) }
  * 3) Hacerlos >:v
  */
+
+app.get("/check-auth", jwtCheck, function onDone(req, res) {
+  console.log(res.status);
+  res.send("OK");
+});
 
 // app.METHOD(PATH, HANDLER) // DOCUMENTACION!
 app.get("/data", function onDone(req, res) {
