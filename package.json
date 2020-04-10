@@ -1,11 +1,12 @@
 {
-  "name": "clinical-backend-test",
+  "name": "clinical-backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec npm start",
-    "start": "node server.js"
+    "start": "node ./bin/www",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/FMGordillo/clinical-backend#readme",
   "dependencies": {
+    "auth0": "^2.24.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -28,6 +30,11 @@
     "jwks-rsa": "^1.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^25.3.0",
+    "nodemon": "^2.0.2",
+    "superagent": "^5.2.2",
+    "supertest": "^4.0.2"
   }
 }
