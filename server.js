@@ -50,7 +50,6 @@ app.use(
  */
 
 app.get("/check-auth", jwtCheck, function onDone(req, res) {
-  console.log(res.status);
   res.send("OK");
 });
 
