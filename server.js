@@ -2,6 +2,11 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 
+const mongoose = require("mongoose");
+const graphqlHTTP = require('express-graphql');
+const schema = require('./schema/schema');
+
+
 const jwks = require("jwks-rsa");
 const jwt = require("express-jwt");
 
@@ -24,11 +29,24 @@ const jwtCheck = jwt({
   })
 });
 
+(async () => {
+  try{
+    await mongoose.connect('mongodb+srv://santuDB:the4hoursemen@clinical-records-beta-poxtn.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connection.once('open',()=>{console.log("Connected to database")})
+  }catch(error){
+    console.log("Error al conectarse con la base de datos:",error);
+  }
+})();
+
 app.use(
   cors({
     origin: "http://localhost:3000"
   })
 );
+app.use('/graphql',graphqlHTTP({
+  schema,
+  graphiql:true
+}));
 //app.use(jwtCheck);
 
 /**
@@ -41,15 +59,9 @@ app.use(
  */
 
 // app.METHOD(PATH, HANDLER) // DOCUMENTACION!
-app.get("/authorized", function onDone(req, res) {
-  res.send("Secured Resource");
-});
-
-// Patients
-
-// Records
-app.get("/", function name(req, res) {
-  res.send(`soy Santu y soy tremendo puto :v`);
+// ahh PERO CON GRAPHQL
+app.post("/authorized", function onDone(req, res) {
+  res.send("alooo: ")
 });
 
 app.listen(port);
