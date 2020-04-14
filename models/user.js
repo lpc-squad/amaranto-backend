@@ -10,7 +10,7 @@ const userSchema = new Schema({
     "genre":String,
     "birth_date":Date,
     "phone": String,
-    "identification_type_id":{
+    "identification_type":{
         "identification_type_description": String,
         "identification_type_num": String
     },
@@ -18,4 +18,4 @@ const userSchema = new Schema({
     "_verified": Boolean
 })
 
-module.exports = mongoose.model('Users',userSchema);
+module.exports = mongoose.model('User',userSchema);

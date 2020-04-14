@@ -1,11 +1,11 @@
 const graphql = require('graphql');
 const { GraphQLDate } = require('graphql-iso-date');
 const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLSchema,GraphQLID,GraphQLList } = graphql;
-const Patients = require('../models/patient');
-const Doctors = require('../models/doctor');
-const Institutes = require('../models/institute');
-const Users = require('../models/user');
-const ClinicalRecords = require('../models/clinical_record');
+const Patient = require('../models/patient');
+const Doctor = require('../models/doctor');
+const Institute = require('../models/institute');
+const User = require('../models/user');
+const ClinicalRecord = require('../models/clinical_record');
 
 const DoctorType = new GraphQLObjectType({
     name: "Doctors",
@@ -45,15 +45,20 @@ const PatientType = new GraphQLObjectType({
         },
         "registered_date": {type: GraphQLDate}/*,
         "institute_details":{
-            "_last_revision":{type: GraphQLDate},
-            "institute_id":{type: GraphQLString}
+            type: new GraphQLList(InstituteDetailsType)
         },
         "coverage":{
-            "_id":{type: GraphQLString},
-            "coverage_name": {type: GraphQLString},
-            "plan": {type:GraphQLString},
-            "coverage_num": {type: GraphQLString}
+            type: new GraphQLList(ConverageType)
         }*/
+    })
+});
+
+const InstituteDetailsType = new GraphQLObjectType({
+    name: "Institute_details",
+    fields: () => ({
+        "_id": {type: GraphQLID},
+        "_last_revision": {type: GraphQLDate},
+        "institute_id":{type:GraphQLString}
     })
 });
 
@@ -69,13 +74,20 @@ const UserType = new GraphQLObjectType({
         "genre": {type: GraphQLString},
         "birth_date":{type: GraphQLDate},
         "phone":{type:GraphQLString},
-        /*identification_type_id":{
-            "_id":{type: GraphQLString},
-            "identification_type_description": {type:GraphQLString},
-            "identification_type_num": {type: GraphQLString}
+        /*identification_type":{
+            type: new GraphQLList(IdentificationType)
         },*/
         "address": {type: GraphQLString},
         "_verified":{type: GraphQLBoolean}
+    })
+});
+
+const IdentificationType= new GraphQLObjectType({
+    name: "Identification_type",
+    fields: () => ({
+        "_id":{type: GraphQLString},
+        "identification_type_description": {type:GraphQLString},
+        "identification_type_num": {type: GraphQLString}
     })
 });
 
@@ -149,6 +161,37 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
+const Mutation= new GraphQLObjectType({
+    name: "Mutation",
+    fields:{
+        //Patients
+        //Doctors
+        //Clinical Records
+        addClinicalRecord:{
+            type: ClinicalRecordType,
+            args:{
+                doctor_id: {type: GraphQLID},
+                patient_id:{type:GraphQLID},
+                indications:{type:GraphQLString},
+                diagnosis:{type:GraphQLString},
+                must_have: {type:GraphQLString}
+            },
+            resolve(parent,args){
+                let cr= new ClinicalRecord({
+                    doctor_id:args.doctor_id,
+                    patient_id: args.patient_id,
+                    indications: args.indications,
+                    _createdAt: new Date(),
+                    diagnosis: args.diagnosis,
+                    must_have: args.must_have
+                });
+                cr.save();
+            }
+        }
+    }
+});
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 }); 

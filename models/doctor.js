@@ -9,4 +9,4 @@ const doctorSchema = new Schema({
     "registered_date": Date
 })
 
-module.exports = mongoose.model('Doctors',doctorSchema);
+module.exports = mongoose.model('Doctor',doctorSchema);
