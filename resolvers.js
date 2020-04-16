@@ -11,19 +11,15 @@ const userDB=
 const resolvers = {
     Query: {
       users: () =>{
-          /*User.find({}).then((result)=>{console.log(result);return result})
-                       .catch((error)=>console.log(error))*/
-                       
-                       return userDB
+        return userDB
       },
       user: (_, { first_name: name }) =>{
-          /*User.find({first_name: name}).then((result)=>{console.log(result);return result})
-                                       .catch((error)=>console.log(error))*/
-                                       return userDB.find(obj=> obj.first_name=name)
+        return userDB.find(obj=> obj.first_name=name)
       },
       institutes: () => {
-        Institute.find({}).then((result)=>{console.log(result);return result})
-                 .catch((error)=>console.log(error))
+        Institute.find({},function getInstitutes(error,doc){//no funca lel
+          console.log(doc)
+        })
 
       }
     },

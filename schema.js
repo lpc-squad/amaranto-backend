@@ -15,10 +15,11 @@ const typeDefs = gql`
       phone: String,
       address: Address, 
       _verified: Boolean,
-      identification_type: Identification_type
-
+      identification_type: Identification_type,
+      email: String
   }
   type Address {
+    _id: ID!,
     country: String,
     city: String,
     street: String,
