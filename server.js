@@ -3,16 +3,15 @@ const cors = require("cors");
 
 const mongoose = require("mongoose");
 const graphqlHTTP = require("express-graphql");
-const resolvers = require('./resolvers');
+const resolvers = require("./resolvers");
 //const { ApolloServer } = require('apollo-server');
-
 
 const jwks = require("jwks-rsa");
 const express = require("express");
 const jwt = require("express-jwt");
 const { AuthenticationClient, ManagementClient } = require("auth0");
 
-const schema = require('./schema');
+const schema = require("./schema");
 
 /*const server = new ApolloServer({
   typeDefs,
@@ -46,14 +45,14 @@ const jwtCheck = jwt({
   }),
 });
 
-mongoose.connect(
-  process.env.DATABASE_URL,
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 mongoose.connection.once("open", () => {
   console.log("Connected to database");
 });
-mongoose.connection.on("error", err => {
+mongoose.connection.on("error", (err) => {
   console.log(err);
 });
 
@@ -66,7 +65,7 @@ app.use(
   "/graphql",
   graphqlHTTP({
     schema,
-    graphiql: true
+    graphiql: true,
   })
 );
 //app.use(jwtCheck);
@@ -79,6 +78,10 @@ app.use(
  * { allRecords, recordsById, allPatients, patientsById, (patientsByDoctorId) }
  * 3) Hacerlos >:v
  */
+
+app.get("/", (req, res) => {
+  res.send("toi vivo :'v");
+});
 
 app.get("/check-auth", jwtCheck, function onDone(req, res) {
   res.send("OK");
