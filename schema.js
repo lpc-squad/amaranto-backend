@@ -11,7 +11,7 @@ const typeDefs = gql`
       first_name: String,
       last_name: String,
       genre: String,
-      birth_date: String,
+      birth_date: Date,
       phone: String,
       address: Address, 
       _verified: Boolean,
@@ -37,7 +37,7 @@ const typeDefs = gql`
       background: String,
       important_info: String,
       user_id: User,
-      registered_date: String,
+      registered_date: Date,
       institute_details: Institute_details,
       coverage: Coverage
   }
@@ -62,7 +62,7 @@ const typeDefs = gql`
       speciality_description:String,
       institute_id: Institute,
       user_id: User,
-      registered_date: String
+      registered_date: Date
   }
   type Clinical_Record{
       _id: ID!,
@@ -70,7 +70,7 @@ const typeDefs = gql`
       patient_id: Patient,
       diagnosis: String,
       indications: String,
-      _createdAt: String,
+      _createdAt: Date,
       must_have: String
   }
   type Query {
