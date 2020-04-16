@@ -1,22 +1,23 @@
 require("dotenv").config();
 const cors = require("cors");
 
+const express = require("express");
 const mongoose = require("mongoose");
-const graphqlHTTP = require("express-graphql");
-const resolvers = require("./resolvers");
-//const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('apollo-server-express');
 
 const jwks = require("jwks-rsa");
-const express = require("express");
 const jwt = require("express-jwt");
 const { AuthenticationClient, ManagementClient } = require("auth0");
 
-const schema = require("./schema");
+const typeDefs = require("./schema");
+const resolvers = require("./resolvers");
 
-/*const server = new ApolloServer({
+
+
+const server = new ApolloServer({
   typeDefs,
   resolvers,
-});*/
+});
 const app = express();
 /*
 const authentication = new AuthenticationClient({
@@ -61,13 +62,7 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
+server.applyMiddleware({app,path:'/graphql'})
 //app.use(jwtCheck);
 
 /**

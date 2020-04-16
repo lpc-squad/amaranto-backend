@@ -1,14 +1,8 @@
 const { gql } = require('apollo-server');
-/*el Address en realidad seria Type address
-type Address {
-    country: String,
-    city: String,
-    street: String,
-    state: String,
-    aditional_info: String
-}
-*/
+
+
 const typeDefs = gql`
+  scalar Date
   type User{
       _id: ID!,
       username: String,
@@ -17,13 +11,20 @@ const typeDefs = gql`
       first_name: String,
       last_name: String,
       genre: String,
-      birth_date: Date,
+      birth_date: String,
       phone: String,
       address: Address, 
       _verified: Boolean,
       identification_type: Identification_type
 
   }
+  type Address {
+    country: String,
+    city: String,
+    street: String,
+    state: String,
+    aditional_info: String
+}
   type Identification_type{
       _id: ID!,
       identification_type_description: String,
@@ -36,12 +37,13 @@ const typeDefs = gql`
       background: String,
       important_info: String,
       user_id: User,
-      registered_date: Date,
+      registered_date: String,
       institute_details: Institute_details,
       coverage: Coverage
   }
   type Institute_details{
       _id: ID!,
+      _last_revision: String
       institute_id: Institute
   }
   type Coverage{
@@ -60,7 +62,7 @@ const typeDefs = gql`
       speciality_description:String,
       institute_id: Institute,
       user_id: User,
-      registered_date: Date
+      registered_date: String
   }
   type Clinical_Record{
       _id: ID!,
@@ -68,12 +70,13 @@ const typeDefs = gql`
       patient_id: Patient,
       diagnosis: String,
       indications: String,
-      _createdAt: Date,
+      _createdAt: String,
       must_have: String
   }
   type Query {
       users: [User],
-      user(first_name: String): User
+      user(first_name: String): User,
+      institutes: [Institute]
   }
 `;
 
