@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const clinicalRecordSchema = new Schema({
+const ClinicalRecordSchema = new Schema({
     "doctor_id": {type: Schema.Types.ObjectId,ref:"Doctor"},
     "patient_id": {type: Schema.Types.ObjectId,ref:"Patient"},
     "indications": String,
@@ -10,4 +10,4 @@ const clinicalRecordSchema = new Schema({
     "must_have":{type:String, required:true}
 })
 
-module.exports = mongoose.model('Clinical_Record',clinicalRecordSchema,"Clinical_Records");
+module.exports = mongoose.model('Clinical_Record',ClinicalRecordSchema,"Clinical_Records");

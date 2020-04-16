@@ -1,5 +1,5 @@
-const User = require('./models/user');
-const Institute = require('./models/institute')
+const User = require('./models/User');
+const Institute = require('./models/Institute')
 const Kind = require('graphql/language')
 const { GraphQLScalarType }= require('graphql')
 const dayjs = require('dayjs')
@@ -11,16 +11,15 @@ const userDB=
 const resolvers = {
     Query: {
       users: () =>{
-        return userDB
+        return User.find({},function getUsers(error,doc){if(error){console.log(error)}})
       },
       user: (_, { first_name: name }) =>{
         return userDB.find(obj=> obj.first_name=name)
       },
       institutes: () => {
-        Institute.find({},function getInstitutes(error,doc){//no funca lel
-          console.log(doc)
-        })
-
+        return Institute.find({},function getInstitutes(error,doc){//no funca lel
+          if(error){ console.log(error)}
+        });
       }
     },
     Date: new GraphQLScalarType({

@@ -12,7 +12,7 @@ const Coverage = new Schema({
     "coverage_num": String
 });
 
-const patientSchema = new Schema({
+const PatientSchema = new Schema({
     "profession": String,
     "family_nucleus": String,
     "background": String,
@@ -23,4 +23,4 @@ const patientSchema = new Schema({
     "coverage": Coverage
 });
 
-module.exports = mongoose.model('Patient',patientSchema,"Patients");
+module.exports = mongoose.model('Patient',PatientSchema,"Patients");

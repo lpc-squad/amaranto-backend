@@ -15,7 +15,7 @@ const AddressSchema = new Schema({
     "aditional_info": String
 });
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     "username": String,
     "password": String,
     "enabled": Boolean,
@@ -30,4 +30,4 @@ const userSchema = new Schema({
     "email": String
 });
 
-module.exports = mongoose.model('User',userSchema,'Users');
+module.exports = mongoose.model('User',UserSchema,'Users');
