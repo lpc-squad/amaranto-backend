@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/FMGordillo/clinical-backend#readme",
   "dependencies": {
+    "apollo-datasource-rest": "^0.8.1",
+    "apollo-server": "^2.12.0",
     "auth0": "^2.24.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

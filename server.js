@@ -3,15 +3,23 @@ const cors = require("cors");
 
 const mongoose = require("mongoose");
 const graphqlHTTP = require("express-graphql");
-const schema = require("./schema/schema");
+const resolvers = require('./resolvers');
+//const { ApolloServer } = require('apollo-server');
+
 
 const jwks = require("jwks-rsa");
 const express = require("express");
 const jwt = require("express-jwt");
 const { AuthenticationClient, ManagementClient } = require("auth0");
 
-const app = express();
+const schema = require('./schema');
 
+/*const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});*/
+const app = express();
+/*
 const authentication = new AuthenticationClient({
   domain: process.env.domain,
 });
