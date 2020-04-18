@@ -7,7 +7,8 @@ const ClinicalRecordSchema = new Schema({
     "indications": String,
     "_createdAt": {type:Date, default:Date.now},
     "diagnosis": {type:String,required:true},
-    "must_have":{type:String, required:true}
+    "must_have":{type:String, required:true},
+    "_updatedAt": {type:Date, default:Date.now},
 })
 
 module.exports = mongoose.model('Clinical_Record',ClinicalRecordSchema,"Clinical_Records");

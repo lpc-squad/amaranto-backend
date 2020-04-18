@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Institute_details = new Schema({
+const Institute_Last_Revision = new Schema({
     "_last_revision":Date,
     "institute_id":{type: Schema.Types.ObjectId, ref:"Institute"}
 });
@@ -14,13 +14,14 @@ const Coverage = new Schema({
 
 const PatientSchema = new Schema({
     "profession": String,
-    "family_nucleus": String,
+    "civil_status": String,
     "background": String,
     "important_info": String,
     "user_id": {type: Schema.Types.ObjectId,ref:"User"},
-    "registered_date": {type:Date, default:Date.now},
-    "institute_details": Institute_details,
-    "coverage": Coverage
+    "institute_last_revision": Institute_Last_Revision,
+    "coverage": Coverage,
+    "_createdAt": {type:Date, default:Date.now},
+    "_updatedAt": {type:Date, default:Date.now},
 });
 
 module.exports = mongoose.model('Patient',PatientSchema,"Patients");

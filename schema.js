@@ -15,8 +15,10 @@ const typeDefs = gql`
       phone: String,
       address: Address, 
       _verified: Boolean,
-      identification_type: Identification_type,
-      email: String
+      identification: Identification,
+      email: String,
+      _createdAt: Date,
+      _updatedAt: Date
   }
   type Address {
     _id: ID!,
@@ -26,32 +28,31 @@ const typeDefs = gql`
     state: String,
     aditional_info: String
 }
-  type Identification_type{
+  type Identification{
       _id: ID!,
-      identification_type_description: String,
-      identification_type_num: String
+      identification_type: String,
+      identification_num: String
   }
   type Patient{
       _id: ID!,
       profession: String,
-      family_nucleus: String,
+      civil_status: String,
       background: String,
       important_info: String,
       user_id: User,
-      registered_date: Date,
-      institute_details: Institute_details,
+      institute_last_revision: Institute_Last_Revision,
       coverage: Coverage
   }
-  type Institute_details{
+  type Institute_Last_Revision{
       _id: ID!,
-      _last_revision: String
+      _last_revision: Date,
       institute_id: Institute
   }
   type Coverage{
       _id: ID!,
       coverage_name: String,
       plan: String,
-      coverage_num: Int
+      coverage_num: String
   }
   type Institute{
       _id:ID!,
@@ -60,10 +61,11 @@ const typeDefs = gql`
   type Doctor{
       _id: ID!,
       medical_license_plate:String,
-      speciality_description:String,
+      speciality:String,
       institute_id: Institute,
       user_id: User,
-      registered_date: Date
+      _createdAt: Date,
+      _updatedAt: Date
   }
   type Clinical_Record{
       _id: ID!,
@@ -71,13 +73,42 @@ const typeDefs = gql`
       patient_id: Patient,
       diagnosis: String,
       indications: String,
+      must_have: String,
       _createdAt: Date,
-      must_have: String
+      _updatedAt: Date
   }
   type Query {
       users: [User],
-      user(first_name: String): User,
-      institutes: [Institute]
+      institutes: [Institute],
+      clinical_records: [Clinical_Record],
+      doctors: [Doctor],
+      patients: [Patient]
+  }
+  type Mutation {
+    addUser(input: UserInput): User
+  }
+  input UserInput {
+    username: String,
+    password: String,
+    first_name: String,
+    last_name: String,
+    genre: String,
+    birth_date: Date,
+    phone: String,
+    address: AddressInput, 
+    identification: IdentificationInput,
+    email: String
+  }
+  input AddressInput {
+    country: String,
+    city: String,
+    street: String,
+    state: String,
+    aditional_info: String
+}
+  input IdentificationInput{
+      identification_type: String,
+      identification_num: String
   }
 `;
 

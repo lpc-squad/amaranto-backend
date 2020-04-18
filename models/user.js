@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const IdentificationTypeSchema = new Schema({
-    "identification_type_description": {type:String,required:true},
-    "identification_type_num": {type:String,required:true}
+const IdentificationSchema = new Schema({
+    "identification_type": {type:String,required:true},
+    "identification_num": {type:String,required:true}
 });
 
 const AddressSchema = new Schema({
@@ -18,16 +18,18 @@ const AddressSchema = new Schema({
 const UserSchema = new Schema({
     "username": String,
     "password": String,
-    "enabled": Boolean,
+    "enabled": {type:Boolean, default:true},
     "first_name": {type: String,required:true},
     "last_name": {type: String,required:true},
     "genre":String,
-    "birth_date":{type:Date, default:Date.now},
+    "birth_date":Date,
     "phone": String,
-    "identification_type": IdentificationTypeSchema,
+    "identification": IdentificationSchema,
     "address": AddressSchema,
-    "_verified": Boolean,
-    "email": String
+    "email": String,
+    "_verified": {type:Boolean,default: false},
+    "_createdAt":{type:Date, default: Date.now},
+    "_updatedAt":{type:Date, default: Date.now}
 });
 
 module.exports = mongoose.model('User',UserSchema,'Users');

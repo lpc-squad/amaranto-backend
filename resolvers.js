@@ -1,44 +1,50 @@
 const User = require('./models/User');
-const Institute = require('./models/Institute')
-const Kind = require('graphql/language')
-const { GraphQLScalarType }= require('graphql')
-const dayjs = require('dayjs')
+const Institute = require('./models/Institute');
+const ClinicalRecord = require('./models/Clinical_Record');
+const Doctor = require('./models/Doctor');
+const Patient = require('./models/Patient');
 
-const userDB = [
-  { id: "2", first_name: "pasdad", birth_date: new Date() },
-  { id: "3", first_name: "qwedas", birth_date: new Date() },
-  { id: "4", first_name: "adsas", birth_date: new Date() },
-  { id: "5", first_name: "adewger", birth_date: new Date() },
-];
+const Kind = require('graphql/language');
+const { GraphQLScalarType }= require('graphql');
+const dayjs = require('dayjs');
+const {DateTimeResolver}=require('graphql-scalars');
+
+function getAllDocuments(model){
+  return model.find({}, (error,doc) => {
+    if(error){throw new Error(error)};
+  });
+};
 
 const resolvers = {
   Query: {
     users: () => {
-      return userDB;
-    },
-    user: (_, { first_name: name }) => {
-      return userDB.find((obj) => (obj.first_name = name));
+      return getAllDocuments(User);
     },
     institutes: () => {
-      return Institutes.find({});
+      return getAllDocuments(Institute);
     },
+    clinical_records: () => {
+      return getAllDocuments(ClinicalRecord);
+    },
+    doctors: () => {
+      return getAllDocuments(Doctor);
+    },
+    patients: () => {
+      return getAllDocuments(Patient);
+    }
   },
-  Date: new GraphQLScalarType({
-    name: "Date",
-    description: "Datetime",
-    serialize(value) {
-      return dayjs(value).format("MM-DD-YYYY");
-    },
-    parseValue(value) {
-      return dayjs(value);
-    },
-    parseLiteral(ast) {
-      if (ast.kind == Kind.INT) {
-        return dayjs(ast.value);
-      }
-      return null;
-    },
-  }),
+  Mutation:{
+    addUser: (_,args) =>{
+      let user= new User({
+        ...args
+      });
+      user.save(function(error,_){
+        if(error){return error}
+      });
+      return user
+    }
+  },
+  Date: DateTimeResolver
 };
 
 module.exports = resolvers;
