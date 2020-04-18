@@ -1,4 +1,4 @@
-export default`
+module.exports=`
 type Patient{
     _id: ID!,
     profession: String,
@@ -12,6 +12,6 @@ type Patient{
     _updatedAt: Date,
 }
 
-type Queery{
+type Query{
     patients: [Patient]
 }`;

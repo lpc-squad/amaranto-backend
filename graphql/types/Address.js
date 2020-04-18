@@ -1,4 +1,4 @@
-export default `
+module.exports= `
     type Address {
     _id: ID!,
     country: String,

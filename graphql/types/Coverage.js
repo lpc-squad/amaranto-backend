@@ -1,4 +1,4 @@
-export default`
+module.exports=`
 type Coverage{
     _id: ID!,
     coverage_name: String,

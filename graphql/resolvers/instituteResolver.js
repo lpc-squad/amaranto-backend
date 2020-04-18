@@ -1,4 +1,4 @@
-const Institute = require('../models/Institute');
+const Institute = require('../../models/Institute');
 
 module.exports={
     Query:{

@@ -1,4 +1,4 @@
-export default `
+module.exports= `
 type Doctor{
     _id: ID!,
     medical_license_plate:String,

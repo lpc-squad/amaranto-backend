@@ -1,4 +1,4 @@
-export default `
+module.exports= `
 type Clinical_Record{
     _id: ID!,
     doctor_id: Doctor,

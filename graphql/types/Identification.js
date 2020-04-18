@@ -1,4 +1,4 @@
-export default `
+module.exports= `
 type Identification{
     _id: ID!,
     identification_type: String,

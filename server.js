@@ -9,8 +9,8 @@ const jwks = require("jwks-rsa");
 const jwt = require("express-jwt");
 const { AuthenticationClient, ManagementClient } = require("auth0");
 
-const typeDefs = require("./schema");
-const resolvers = require("./resolvers");
+const typeDefs = require("./graphql/typeDefs");
+const resolvers = require("./graphql/resolvers");
 
 
 
