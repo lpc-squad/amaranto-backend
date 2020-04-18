@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 const Institute_Last_Revision = new Schema({
@@ -17,11 +18,13 @@ const PatientSchema = new Schema({
     "civil_status": String,
     "background": String,
     "important_info": String,
-    "user_id": {type: Schema.Types.ObjectId,ref:"User"},
+    "user_id": {type: Schema.Types.ObjectId,ref:"User",unique:true},
     "institute_last_revision": Institute_Last_Revision,
     "coverage": Coverage,
     "_createdAt": {type:Date, default:Date.now},
     "_updatedAt": {type:Date, default:Date.now},
 });
+
+PatientSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Patient',PatientSchema,"Patients");
