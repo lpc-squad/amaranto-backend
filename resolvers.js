@@ -4,9 +4,6 @@ const ClinicalRecord = require('./models/Clinical_Record');
 const Doctor = require('./models/Doctor');
 const Patient = require('./models/Patient');
 
-const Kind = require('graphql/language');
-const { GraphQLScalarType }= require('graphql');
-const dayjs = require('dayjs');
 const {DateTimeResolver}=require('graphql-scalars');
 
 function getAllDocuments(model){
