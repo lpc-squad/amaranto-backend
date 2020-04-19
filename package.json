@@ -9,20 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FMGordillo/clinical-backend.git"
+    "url": "git+https://github.com/lpc-squad/clinical-backend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FMGordillo/clinical-backend/issues"
+    "url": "https://github.com/lpc-squad/clinical-backend/issues"
   },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "homepage": "https://github.com/FMGordillo/clinical-backend#readme",
+  "homepage": "https://github.com/lpc-squad/clinical-backend#readme",
   "dependencies": {
     "apollo-datasource-rest": "^0.8.1",
     "apollo-server": "^2.12.0",
