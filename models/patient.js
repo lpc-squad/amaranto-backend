@@ -19,8 +19,8 @@ const PatientSchema = new Schema({
     "background": String,
     "important_info": String,
     "user_id": {type: Schema.Types.ObjectId,ref:"User",unique:true},
-    "institute_last_revision": Institute_Last_Revision,
-    "coverage": Coverage,
+    "institute_last_revision": [Institute_Last_Revision],
+    "coverage": [Coverage],
     "_createdAt": {type:Date, default:Date.now},
     "_updatedAt": {type:Date, default:Date.now},
 });

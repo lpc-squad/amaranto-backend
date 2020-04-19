@@ -6,8 +6,8 @@ type Patient{
     background: String,
     important_info: String,
     user_id: User,
-    institute_last_revision: Institute_Last_Revision,
-    coverage: Coverage,
+    institute_last_revision: [Institute_Last_Revision],
+    coverage: [Coverage],
     _createdAt: Date,
     _updatedAt: Date,
 }
