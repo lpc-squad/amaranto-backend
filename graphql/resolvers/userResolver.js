@@ -9,11 +9,7 @@ module.exports={
       let user = new User({
         ...args.input
       });
-      user.save(function (error, _) {
-        if (error) {
-          console.log(`Error at File: ${__dirname}. Error: ${error}`)
-        }
-      });
+      user.save().catch(error=>{throw new Error(`Error al guardar usuario: File${__dirname}. Error: ${error}`)});
       return user;
     }
     }

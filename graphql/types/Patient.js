@@ -13,5 +13,8 @@ type Patient{
 }
 
 type Query{
-    patients: [Patient]
-}`;
+    patients: [Patient],
+    patientsFromInstitute(institute_id: String): [Patient]
+}
+
+`;
