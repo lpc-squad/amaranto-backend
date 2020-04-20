@@ -1,15 +1,18 @@
 const Doctor = require('../../models/Doctor');
-const User = require('../../models/User')
+const User = require('../../models/User');
+const Institute = require('../../models/Institute');
 
 module.exports={
     Query: {
         doctors: () => Doctor.find()
     },
     Doctor:{
-        user:  (root) => {
-            console.log( {first_name: `soy el usuario ${root.user_id}`})            
-            return {first_name: `soy el usuario ${root.user_id}`,last_name: "inspector de anos"};
-            //return User.findById(root.user_id).then(doc=> console.log(`Documento: ${doc}`));
-        }
+        user:  root => User.findById(root.user_id)
+            .then(doc=> doc)
+            .catch(error=> {throw new Error(`Fetching data error: ${error}`)})
+        ,
+        institutes: root => Institute.find({institute_id:{$in:root.institute_id}})
+            .then(docs=>docs)
+            .catch(error=> {throw new Error(`Fetching data error: ${error}`)})
     }
 };

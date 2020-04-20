@@ -11,10 +11,22 @@ type Patient{
     _createdAt: Date,
     _updatedAt: Date,
 }
+input PatientInput{
+    profession: String,
+    civil_status: String!,
+    background: String,
+    important_info: String,
+    user_id: ID,
+    coverage: [Coverage],
+}
 
 type Query{
     patients: [Patient],
-    patientsFromInstitute(institute_id: String): [Patient]
+    patientsFromInstitute(institute_id: ID): [Patient]
+}
+
+type Mutation{
+    addPatient(input: PatientInput): Patient
 }
 
 `;

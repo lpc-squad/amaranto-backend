@@ -27,13 +27,13 @@ type Mutation {
 input UserInput {
     username: String,
     password: String,
-    first_name: String,
-    last_name: String,
+    first_name: String!,
+    last_name: String!,
     genre: String,
     birth_date: Date,
     phone: String,
-    address: AddressInput, 
-    identification: IdentificationInput,
+    address: AddressInput!, 
+    identification: IdentificationInput!,
     email: String
 }
 input AddressInput {

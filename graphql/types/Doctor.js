@@ -9,6 +9,9 @@ type Doctor{
     _updatedAt: Date
 }
 
+
 type Query{
     doctors: [Doctor]
-}`;
+}
+
+`;
