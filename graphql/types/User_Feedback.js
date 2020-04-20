@@ -1,6 +1,6 @@
 module.exports=`
 type User_Feedback{
-    user_id: User,
+    user: User,
     _createdAt: Date,
     feedback: String
 }

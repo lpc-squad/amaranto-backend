@@ -6,9 +6,9 @@ module.exports={
         doctors: () => Doctor.find()
     },
     Doctor:{
-        user_id: (root) => {
-            console.log( {first_name: `soy el usuario ${root.user_id}`})
-            return {first_name: `soy el usuario ${root.user_id}`};
+        user:  (root) => {
+            console.log( {first_name: `soy el usuario ${root.user_id}`})            
+            return {first_name: `soy el usuario ${root.user_id}`,last_name: "inspector de anos"};
             //return User.findById(root.user_id).then(doc=> console.log(`Documento: ${doc}`));
         }
     }

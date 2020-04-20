@@ -1,8 +1,8 @@
 module.exports= `
 type Clinical_Record{
     _id: ID!,
-    doctor_id: Doctor,
-    patient_id: Patient,
+    doctor: Doctor,
+    patient: Patient,
     diagnosis: String,
     indications: String,
     must_have: String,

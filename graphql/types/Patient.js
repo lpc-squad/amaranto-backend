@@ -5,7 +5,7 @@ type Patient{
     civil_status: String,
     background: String,
     important_info: String,
-    user_id: User,
+    user: User,
     institute_last_revision: [Institute_Last_Revision],
     coverage: [Coverage],
     _createdAt: Date,
