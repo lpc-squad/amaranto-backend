@@ -1,4 +1,4 @@
-module.exports=`
+module.exports = `
 type Patient{
     _id: ID!,
     profession: String,
@@ -17,10 +17,12 @@ input PatientInput{
     background: String,
     important_info: String,
     user_id: ID,
-    coverage: [Coverage],
+    # WTF
+    # coverage: [Coverage],
 }
 
 type Query{
+    patient(id: ID!): Patient,
     patients: [Patient],
     patientsFromInstitute(institute_id: ID): [Patient]
 }
