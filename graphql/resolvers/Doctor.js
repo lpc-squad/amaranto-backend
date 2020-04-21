@@ -7,9 +7,11 @@ module.exports={
         doctors: () => Doctor.find()
     },
     Doctor:{
-        user:  root => User.findById(root.user_id)
+        user:  root => {
+            //console.log(`El papu es ${root} y su id es ${root.user_id}`)
+            return User.findById(root.user_id)
             .then(doc=> doc)
-            .catch(error=> {throw new Error(`Fetching data error: ${error}`)})
+            .catch(error=> {throw new Error(`Fetching data error: ${error}`)})}
         ,
         institutes: root => Institute.find({institute_id:{$in:root.institute_id}})
             .then(docs=>docs)

@@ -8,7 +8,7 @@ module.exports={
             .then(docs=>docs)
             .catch(error=>{throw new Error(`Error at fetching data from DB: ${error}`)})
         ,
-        clinicalRecordsFromPatients: (_,{id}) => ClinicalRecord.find({patient_id: id})
+        clinicalRecordsFromPatient: (_,{id}) => ClinicalRecord.find({patient_id: id})
             .then(docs=> docs)
             .catch(error=>{throw new Error(`Error at fetching data from DB: ${error}`)})
         ,

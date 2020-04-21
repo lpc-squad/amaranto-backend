@@ -36,15 +36,5 @@ input UserInput {
     identification: IdentificationInput!,
     email: String
 }
-input AddressInput {
-    country: String,
-    city: String,
-    street: String,
-    state: String,
-    aditional_info: String
-}
-input IdentificationInput{
-    identification_type: String,
-    identification_num: String
-}
+
 `;

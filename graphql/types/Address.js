@@ -6,4 +6,11 @@ module.exports= `
     street: String,
     state: String,
     aditional_info: String
+}
+input AddressInput {
+    country: String,
+    city: String,
+    street: String,
+    state: String,
+    aditional_info: String
 }`;

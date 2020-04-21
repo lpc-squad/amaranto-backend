@@ -11,13 +11,14 @@ type Patient{
     _createdAt: Date,
     _updatedAt: Date,
 }
+
 input PatientInput{
     profession: String,
     civil_status: String!,
     background: String,
     important_info: String,
     user_id: ID,
-    coverage: [Coverage],
+    coverage: [CoverageInput],
 }
 
 type Query{
