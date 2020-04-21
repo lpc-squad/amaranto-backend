@@ -19,7 +19,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged --bail"
     }
   },
   "homepage": "https://github.com/lpc-squad/clinical-backend#readme",
