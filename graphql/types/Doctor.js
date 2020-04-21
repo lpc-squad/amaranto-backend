@@ -9,9 +9,19 @@ type Doctor{
     _updatedAt: Date
 }
 
-
-type Query{
-    doctors: [Doctor]
+input Doctor{
+    medical_license_plate:String!,
+    speciality:String!,
+    institutes: [InstituteInput],
+    user_id: ID
 }
 
+type Query{
+    doctors: [Doctor],
+    doctor(id:ID!):Doctor
+}
+
+type Mutation{
+    addDoctor(input: DoctorInput)
+}
 `;

@@ -3,7 +3,14 @@ const Patient = require("../../models/Patient");
 
 module.exports = {
   Query: {
-    patient: (_, { id }) => Patient.findById(id),
+    patient: (_, { id }) => 
+      Patient.findById(id)
+        .then(doc=>doc)
+        .catch(error=> {
+          throw new Error(
+            `Error at fetching data from DB. File: ${__dirname}. Error: ${error}`
+          )
+        }),
     patients: () =>
       Patient.find()
         .then((patients) => patients)
@@ -20,6 +27,17 @@ module.exports = {
             `Error at fetching data from DB.: File: ${__dirname}. Error:${error}`
           );
         }),
+  },
+  Patient: {
+    user: root =>
+      User.findById(root.user_id)
+        .then(doc=>doc)
+        .catch(error => {
+          throw new Error(
+            `Error at fetching data from DB.: File: ${__dirname}. Error:${error}`
+          );
+        })
+
   },
   Mutation: {
     addPatient: async (_, { input }) => {

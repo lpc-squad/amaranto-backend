@@ -4,11 +4,15 @@ type Institute{
     institute_name:String
 }
 
+input InstituteInput{
+    institute_name
+}
+
 type Query{
     institutes: [Institute]
 }
 
 type Mutation{
-    addInstitute(institute_name:String): Institute
+    addInstitute(input:InstituteInput): Institute
 }
 `;
