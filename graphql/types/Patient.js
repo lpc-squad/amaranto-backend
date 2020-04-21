@@ -1,4 +1,4 @@
-module.exports=`
+module.exports = `
 type Patient{
     _id: ID!,
     profession: String,
@@ -22,6 +22,7 @@ input PatientInput{
 }
 
 type Query{
+    patient(id: ID!): Patient,
     patients: [Patient],
     patientsFromInstitute(institute_id: ID): [Patient]
 }

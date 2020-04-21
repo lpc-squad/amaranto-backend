@@ -3,7 +3,7 @@ const cors = require("cors");
 
 const express = require("express");
 const mongoose = require("mongoose");
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require("apollo-server-express");
 
 const jwks = require("jwks-rsa");
 const jwt = require("express-jwt");
@@ -11,8 +11,6 @@ const { AuthenticationClient, ManagementClient } = require("auth0");
 
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
-
-
 
 const server = new ApolloServer({
   typeDefs,
@@ -49,6 +47,7 @@ const jwtCheck = jwt({
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 mongoose.connection.once("open", () => {
   console.log("Connected to database");
@@ -62,7 +61,7 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-server.applyMiddleware({app,path:'/graphql'})
+server.applyMiddleware({ app, path: "/graphql" });
 //app.use(jwtCheck);
 
 /**
