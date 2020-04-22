@@ -1,12 +1,23 @@
 require("dotenv").config();
 const cors = require("cors");
-const jwks = require("jwks-rsa");
+
 const express = require("express");
+const mongoose = require("mongoose");
+const { ApolloServer } = require("apollo-server-express");
+
+const jwks = require("jwks-rsa");
 const jwt = require("express-jwt");
 const { AuthenticationClient, ManagementClient } = require("auth0");
 
-const app = express();
+const typeDefs = require("./graphql/typeDefs");
+const resolvers = require("./graphql/resolvers");
 
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+const app = express();
+/*
 const authentication = new AuthenticationClient({
   domain: process.env.domain,
 });
@@ -33,12 +44,25 @@ const jwtCheck = jwt({
   }),
 });
 
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
+mongoose.connection.once("open", () => {
+  console.log("Connected to database");
+});
+mongoose.connection.on("error", (err) => {
+  console.log(err);
+});
+
 app.use(
   cors({
     origin: "http://localhost:3000",
   })
 );
-// app.use(jwtCheck);
+server.applyMiddleware({ app, path: "/graphql" });
+//app.use(jwtCheck);
 
 /**
  * RUTAS (https://expressjs.com/en/starter/basic-routing.html)
@@ -48,6 +72,10 @@ app.use(
  * { allRecords, recordsById, allPatients, patientsById, (patientsByDoctorId) }
  * 3) Hacerlos >:v
  */
+
+app.get("/", (req, res) => {
+  res.send("toi vivo :'v");
+});
 
 app.get("/check-auth", jwtCheck, function onDone(req, res) {
   res.send("OK");
