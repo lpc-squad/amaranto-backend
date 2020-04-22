@@ -8,7 +8,7 @@ type Doctor {
   _updatedAt: Date
 }
 
-input Doctor {
+input DoctorInput {
   medical_license_plate: String!
   speciality: String!
   institutes: [InstituteInput]
