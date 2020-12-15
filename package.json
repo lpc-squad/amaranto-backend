@@ -22,7 +22,7 @@
     "apollo-datasource-rest": "^0.8.1",
     "apollo-server": "^2.12.0",
     "apollo-server-express": "^2.12.0",
-    "auth0": "^2.24.0",
+    "auth0": "^2.27.1",
     "cors": "^2.8.5",
     "dayjs": "^1.8.24",
     "dotenv": "^8.2.0",
