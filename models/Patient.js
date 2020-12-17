@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const Institute_Last_Revision = new Schema({
   _last_revision: Date,
@@ -19,6 +20,7 @@ const PatientSchema = new Schema({
   background: String,
   important_info: String,
   user_id: { type: Schema.Types.ObjectId, ref: "User", unique: true },
+  // eslint-disable-next-line
   institute_last_revision: [Institute_Last_Revision],
   coverage: [Coverage],
   _createdAt: { type: Date, default: Date.now },

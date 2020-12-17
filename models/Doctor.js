@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const DoctorSchema = new Schema({
   medical_license_plate: { type: String, required: true, unique: true },

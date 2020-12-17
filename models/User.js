@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const IdentificationSchema = new Schema({
   identification_type: { type: String, required: true },

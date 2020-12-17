@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const ClinicalRecordSchema = new Schema({
   doctor_id: { type: Schema.Types.ObjectId, ref: "Doctor" },
@@ -8,7 +9,7 @@ const ClinicalRecordSchema = new Schema({
   _createdAt: { type: Date, default: JSON.stringify(Date.now) },
   diagnosis: { type: String, required: true },
   must_have: { type: String, required: true },
-  _updatedAt: { type: Date},
+  _updatedAt: { type: Date },
 });
 
 module.exports = mongoose.model(

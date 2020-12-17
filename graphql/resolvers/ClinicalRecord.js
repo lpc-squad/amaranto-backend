@@ -25,7 +25,7 @@ module.exports = {
   },
   Mutation: {
     addClinicalRecord: (_, { input }) => {
-      let clinicalRecord = new ClinicalRecord({
+      const clinicalRecord = new ClinicalRecord({
         ...input,
       });
       clinicalRecord.save().catch((error) => {
@@ -34,7 +34,7 @@ module.exports = {
         );
       });
       return clinicalRecord;
-      //return clinicalRecord.save().then(doc=>doc).catch(error=>{throw new Error(`Error at saving the clinical record. File ${__dirname}. Error: ${error}`)})
+      // return clinicalRecord.save().then(doc=>doc).catch(error=>{throw new Error(`Error at saving the clinical record. File ${__dirname}. Error: ${error}`)})
     },
   },
   Clinical_Record: {

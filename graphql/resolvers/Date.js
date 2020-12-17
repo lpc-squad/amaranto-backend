@@ -1,5 +1,5 @@
-const {DateTimeResolver}=require('graphql-scalars');
+const { DateTimeResolver } = require("graphql-scalars");
 
-module.exports={
-    Date: DateTimeResolver
+module.exports = {
+  Date: DateTimeResolver,
 };

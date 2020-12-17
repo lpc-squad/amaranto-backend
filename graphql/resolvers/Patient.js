@@ -3,13 +3,13 @@ const Patient = require("../../models/Patient");
 
 module.exports = {
   Query: {
-    patient: (_, { id }) => 
+    patient: (_, { id }) =>
       Patient.findById(id)
-        .then(doc=>doc)
-        .catch(error=> {
+        .then((doc) => doc)
+        .catch((error) => {
           throw new Error(
             `Error at fetching data from DB. File: ${__dirname}. Error: ${error}`
-          )
+          );
         }),
     patients: () =>
       Patient.find()
@@ -29,15 +29,14 @@ module.exports = {
         }),
   },
   Patient: {
-    user: root =>
+    user: (root) =>
       User.findById(root.user_id)
-        .then(doc=>doc)
-        .catch(error => {
+        .then((doc) => doc)
+        .catch((error) => {
           throw new Error(
             `Error at fetching data from DB.: File: ${__dirname}. Error:${error}`
           );
-        })
-
+        }),
   },
   Mutation: {
     addPatient: async (_, { input }) => {
@@ -46,7 +45,7 @@ module.exports = {
         // let dummyUser = new User({
 
         // })
-        let patient = new Patient({
+        const patient = new Patient({
           ...input,
         });
 
@@ -56,7 +55,9 @@ module.exports = {
 
         return patientSaved;
       } catch (error) {
-        throw `Error at saving data from DB.: File: ${__dirname}. Error:${error}`;
+        throw new Error(
+          `Error at saving data from DB.: File: ${__dirname}. Error:${error}`
+        );
       }
     },
   },

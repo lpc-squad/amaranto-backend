@@ -7,7 +7,7 @@ const { ApolloServer } = require("apollo-server-express");
 
 const jwks = require("jwks-rsa");
 const jwt = require("express-jwt");
-const { AuthenticationClient, ManagementClient } = require("auth0");
+// const { AuthenticationClient, ManagementClient } = require("auth0");
 
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
@@ -62,7 +62,7 @@ app.use(
   })
 );
 server.applyMiddleware({ app, path: "/graphql" });
-//app.use(jwtCheck);
+// app.use(jwtCheck);
 
 /**
  * RUTAS (https://expressjs.com/en/starter/basic-routing.html)
@@ -82,21 +82,21 @@ app.get("/check-auth", jwtCheck, function onDone(req, res) {
 });
 
 // app.METHOD(PATH, HANDLER) // DOCUMENTACION!
-app.get("/data", function onDone(req, res) {
-  authentication
-    .clientCredentialsGrant({
-      audience: process.env.audience,
-      client_id: process.env.clientId,
-      client_secret: process.env.clientSecret,
-    })
-    .then((res) => {
-      console.log("WTF");
-      res.send("OK");
-    })
-    .catch((err) => {
-      console.error("AHA", err);
-      res.send("OK");
-    });
-});
+// app.get("/data", function onDone(req, res) {
+//   authentication
+//     .clientCredentialsGrant({
+//       audience: process.env.audience,
+//       client_id: process.env.clientId,
+//       client_secret: process.env.clientSecret,
+//     })
+//     .then((res) => {
+//       console.log("WTF");
+//       res.send("OK");
+//     })
+//     .catch((err) => {
+//       console.error("AHA", err);
+//       res.send("OK");
+//     });
+// });
 
 module.exports = app;
