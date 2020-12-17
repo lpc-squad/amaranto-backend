@@ -5,8 +5,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { ApolloServer } = require("apollo-server-express");
 
-const jwks = require("jwks-rsa");
-const jwt = require("express-jwt");
+// const jwks = require("jwks-rsa");
+// const jwt = require("express-jwt");
 // const { AuthenticationClient, ManagementClient } = require("auth0");
 
 const typeDefs = require("./graphql/typeDefs");
@@ -33,16 +33,17 @@ const management = new ManagementClient({
  * SETEO
  */
 
-const jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    audience: process.env.audience,
-    issuer: process.env.issuer,
-    algorithms: ["RS256"],
-  }),
-});
+// const jwtCheck = jwt({
+
+//   secret: jwks.expressJwtSecret({
+//     cache: true,
+//     rateLimit: true,
+//     jwksRequestsPerMinute: 5,
+//     audience: process.env.audience,
+//     issuer: process.env.issuer,
+//     algorithms: ["RS256"],
+//   }),
+// });
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -77,9 +78,9 @@ app.get("/", (req, res) => {
   res.send("toi vivo :'v");
 });
 
-app.get("/check-auth", jwtCheck, function onDone(req, res) {
-  res.send("OK");
-});
+// app.get("/check-auth", jwtCheck, function onDone(req, res) {
+//   res.send("OK");
+// });
 
 // app.METHOD(PATH, HANDLER) // DOCUMENTACION!
 // app.get("/data", function onDone(req, res) {
