@@ -1,8 +1,8 @@
-const ClinicalRecord = require("../../models/Clinical_Record");
-const Doctor = require("../../models/Doctor");
-const Patient = require("../../models/Patient");
+import ClinicalRecord from "../../models/Clinical_Record";
+import Doctor from "../../models/Doctor";
+import Patient from "../../models/Patient";
 
-module.exports = {
+export default {
   Query: {
     clinicalRecords: () =>
       ClinicalRecord.find()

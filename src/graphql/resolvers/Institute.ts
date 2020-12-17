@@ -1,6 +1,6 @@
 const Institute = require("../../models/Institute");
 
-module.exports = {
+export default {
   Query: {
     institutes: () =>
       Institute.find()

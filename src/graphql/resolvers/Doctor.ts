@@ -1,17 +1,17 @@
-const Doctor = require("../../models/Doctor");
-const User = require("../../models/User");
-const Institute = require("../../models/Institute");
+import DoctorModel from "../../models/Doctor";
+import User from "../../models/User";
+import Institute from "../../models/Institute";
 
-module.exports = {
+export default {
   Query: {
     doctors: () =>
-      Doctor.find()
+      DoctorModel.find()
         .then((docs) => docs)
         .catch((error) => {
           throw new Error(`Fetching data error: ${error}`);
         }),
     doctor: (_, { id }) =>
-      Doctor.findById(id)
+      DoctorModel.findById(id)
         .then((doc) => doc)
         .catch((error) => {
           throw new Error(`Fetching data error: ${error}`);

@@ -1,22 +1,27 @@
 require("dotenv").config();
-const cors = require("cors");
+import cors from "cors";
 
-const express = require("express");
-const mongoose = require("mongoose");
-const { ApolloServer } = require("apollo-server-express");
+import express from "express";
+import mongoose from "mongoose";
+import { ApolloServer } from "apollo-server-express";
 
-const jwks = require("jwks-rsa");
-const jwt = require("express-jwt");
+import jwks from "jwks-rsa";
+import jwt from "express-jwt";
 // const { AuthenticationClient, ManagementClient } = require("auth0");
 
-const typeDefs = require("./graphql/typeDefs");
-const resolvers = require("./graphql/resolvers");
+import typeDefs from "./graphql/typeDefs";
+import resolvers from "./graphql/resolvers";
+
+console.log(typeDefs, resolvers);
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 const app = express();
+
+const PORT = process.env.PORT || 4000;
+
 /*
 const authentication = new AuthenticationClient({
   domain: process.env.domain,
@@ -33,16 +38,17 @@ const management = new ManagementClient({
  * SETEO
  */
 
-const jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    audience: process.env.audience,
-    issuer: process.env.issuer,
-    algorithms: ["RS256"],
-  }),
-});
+// const jwtCheck = jwt({
+//   secret: jwks.expressJwtSecret({
+//     jwksUri: "",
+//     cache: true,
+//     rateLimit: true,
+//     jwksRequestsPerMinute: 5,
+//     // audience: process.env.audience,
+//     // issuer: process.env.issuer,
+//     // algorithms: ["RS256"],
+//   }),
+// });
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -77,9 +83,9 @@ app.get("/", (req, res) => {
   res.send("toi vivo :'v");
 });
 
-app.get("/check-auth", jwtCheck, function onDone(req, res) {
-  res.send("OK");
-});
+// app.get("/check-auth", jwtCheck, function onDone(req, res) {
+//   res.send("OK");
+// });
 
 // app.METHOD(PATH, HANDLER) // DOCUMENTACION!
 // app.get("/data", function onDone(req, res) {
@@ -99,4 +105,6 @@ app.get("/check-auth", jwtCheck, function onDone(req, res) {
 //     });
 // });
 
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});

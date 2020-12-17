@@ -1,7 +1,7 @@
 const User = require("../../models/User");
 const Patient = require("../../models/Patient");
 
-module.exports = {
+export default {
   Query: {
     patient: (_, { id }) =>
       Patient.findById(id)

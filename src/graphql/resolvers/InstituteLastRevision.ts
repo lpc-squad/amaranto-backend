@@ -1,6 +1,6 @@
 const Institute = require("../../models/Institute");
 
-module.exports = {
+export default {
   Institute_Last_Revision: {
     institute: (root) =>
       Institute.findById(root.institute_id)

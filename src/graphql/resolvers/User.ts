@@ -1,9 +1,9 @@
-const User = require("../../models/User");
+const UserModel = require("../../models/User");
 
-module.exports = {
+export default {
   Query: {
     users: () =>
-      User.find()
+      UserModel.find()
         .then((doc) => doc)
         .catch((error) => {
           throw new Error(
@@ -13,7 +13,7 @@ module.exports = {
   },
   Mutation: {
     addUser: (_, args) => {
-      const user = new User({
+      const user = new UserModel({
         ...args.input,
       });
       user.save().catch((error) => {

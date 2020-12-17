@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -8,7 +8,7 @@ const UserFeedbackSchema = new Schema({
   feedback: { type: String, required: true },
 });
 
-module.exports = mongoose.model(
+export default mongoose.model(
   "User_Feedback",
   UserFeedbackSchema,
   "User_Feedbacks"

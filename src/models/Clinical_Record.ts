@@ -1,6 +1,4 @@
-const mongoose = require("mongoose");
-
-const { Schema } = mongoose;
+import { model, Schema } from "mongoose";
 
 const ClinicalRecordSchema = new Schema({
   doctor_id: { type: Schema.Types.ObjectId, ref: "Doctor" },
@@ -12,7 +10,7 @@ const ClinicalRecordSchema = new Schema({
   _updatedAt: { type: Date },
 });
 
-module.exports = mongoose.model(
+export default model(
   "Clinical_Record",
   ClinicalRecordSchema,
   "Clinical_Records"

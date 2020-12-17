@@ -1,6 +1,6 @@
 const UserFeedback = require("../../models/User_Feedback");
 
-module.exports = {
+export default {
   Query: {
     userFeedbacks: () =>
       UserFeedback.find()

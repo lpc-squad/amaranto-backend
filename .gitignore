@@ -1,4 +1,5 @@
 .env
 .eslintcache
+dist
 localhost*.pem
 node_modules
