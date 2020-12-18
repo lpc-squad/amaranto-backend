@@ -1,3 +1,4 @@
+export default `
 type Patient {
   _id: ID!
   user: User
@@ -29,3 +30,4 @@ type Query {
 type Mutation {
   addPatient(input: PatientInput): Patient
 }
+`;

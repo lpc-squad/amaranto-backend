@@ -1,3 +1,4 @@
+export default `
 type Coverage {
   _id: ID!
   coverage_name: String
@@ -9,3 +10,4 @@ input CoverageInput {
   plan: String
   coverage_num: Int
 }
+`;

@@ -1,5 +1,5 @@
-const User = require("../../models/User");
-const Patient = require("../../models/Patient");
+import User from "../../models/User";
+import Patient from "../../models/Patient";
 
 export default {
   Query: {

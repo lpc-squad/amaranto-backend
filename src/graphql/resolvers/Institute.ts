@@ -1,4 +1,4 @@
-const Institute = require("../../models/Institute");
+import Institute from "../../models/Institute";
 
 export default {
   Query: {

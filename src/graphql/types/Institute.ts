@@ -1,3 +1,4 @@
+export default `
 type Institute {
   _id: ID!
   institute_name: String
@@ -14,3 +15,4 @@ type Query {
 type Mutation {
   addInstitute(input: InstituteInput): Institute
 }
+`;

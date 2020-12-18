@@ -1,5 +1,5 @@
-const path = require("path");
-const { fileLoader, mergeResolvers } = require("merge-graphql-schemas");
+import path from "path";
+import { fileLoader, mergeResolvers } from "merge-graphql-schemas";
 
 const resolversArray = fileLoader(path.join(__dirname, "./resolvers"));
 

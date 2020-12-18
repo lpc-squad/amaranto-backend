@@ -1,4 +1,4 @@
-const UserFeedback = require("../../models/User_Feedback");
+import UserFeedback from "../../models/User_Feedback";
 
 export default {
   Query: {

@@ -1,3 +1,4 @@
+export default `
 type User_Feedback {
   user: User
   feedback: String
@@ -12,4 +13,4 @@ type Mutation {
 input User_Feedback_Input {
   user_id: ID!
   feedback: String!
-}
+}`;

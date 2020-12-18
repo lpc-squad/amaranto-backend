@@ -1,3 +1,4 @@
+export default `
 type Doctor {
   _id: ID!
   medical_license_plate: String
@@ -23,3 +24,4 @@ type Query {
 type Mutation {
   addDoctor(input: DoctorInput): Doctor
 }
+`;

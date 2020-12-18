@@ -1,4 +1,4 @@
-const UserModel = require("../../models/User");
+import UserModel from "../../models/User";
 
 export default {
   Query: {

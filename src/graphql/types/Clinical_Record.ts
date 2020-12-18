@@ -1,3 +1,4 @@
+export default `
 type Clinical_Record {
   _id: ID!
   doctor: Doctor
@@ -23,3 +24,4 @@ type Query {
 type Mutation {
   addClinicalRecord(input: ClinicalRecordInput): Clinical_Record
 }
+`;

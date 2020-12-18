@@ -1,3 +1,4 @@
+export default `
 type User {
   _id: ID!
   genre: String
@@ -35,3 +36,4 @@ input UserInput {
   address: AddressInput!
   identification: IdentificationInput!
 }
+`;

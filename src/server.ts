@@ -5,8 +5,8 @@ import express from "express";
 import mongoose from "mongoose";
 import { ApolloServer } from "apollo-server-express";
 
-import jwks from "jwks-rsa";
-import jwt from "express-jwt";
+// import jwks from "jwks-rsa";
+// import jwt from "express-jwt";
 // const { AuthenticationClient, ManagementClient } = require("auth0");
 
 import typeDefs from "./graphql/typeDefs";
@@ -106,5 +106,5 @@ app.get("/", (req, res) => {
 // });
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on http://localhost:${PORT}`);
 });

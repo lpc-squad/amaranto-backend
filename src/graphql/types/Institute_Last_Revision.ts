@@ -1,3 +1,4 @@
+export default `
 type Institute_Last_Revision {
   _id: ID!
   _last_revision: Date
@@ -8,3 +9,4 @@ input InstituteLastRevisionInput {
   _last_revision: Date
   institute: InstituteInput!
 }
+`;
