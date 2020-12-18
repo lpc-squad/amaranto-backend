@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node src/server",
     "start": "ts-node dist/server",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "test": "echo \"No tests specified, skipping for CI\" && exit 0"
   },
   "repository": {
     "type": "git",
